@@ -46,9 +46,19 @@
 	background:url('../images/extjs_icons/home.png') no-repeat center center;
 }
 
-
 /*新增自定义样式*/
 /*button-link为提示信息增加的类*/
 .easyui-menubutton .button-link,.easyui-linkbutton .button-link{
 	color:red;
 } 
+
+.avatar{
+	text-align:center;
+}
+
+.avatar img{
+	border-radius: 50%;
+	width:60px;
+	height:60px;
+}
+

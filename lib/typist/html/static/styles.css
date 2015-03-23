@@ -1,0 +1,92 @@
+@import url(http://fonts.googleapis.com/css?family=Josefin+Slab);
+
+html, body {
+	margin: 0;
+	padding: 0;
+	background: url(textured_paper.png);
+	font: 24px/1.4 'Josefin Slab', Georgia, serif;
+	}
+
+body {
+	margin: 2% 5%;
+	}
+
+h1 {
+	margin: 0;
+	padding: 0;
+	font-size: 2em;
+	}
+
+code {
+	font: 0.5em "Lucida Console", Monaco, monospace;
+	border-radius: 0.5em;
+	opacity: 0.5;
+	}
+
+	code:hover {
+		opacity: 1;
+		}
+
+.forkme {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 15vw;
+	height: 15vw;
+	max-width: 149px;
+	max-height: 149px;
+	z-index: 999;
+	overflow: hidden;
+	text-indent: 100%;
+	font: 0/0 a;
+	background: url("http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png");
+	background-size: cover;
+	}
+
+.ava {
+	position: fixed;
+	overflow: hidden;
+	width: 200px;
+	height: 200px;
+	border-radius: 100px;
+	}
+
+	.ava_othello {
+		top: 100px;
+		left: 5%;
+		background: no-repeat url(othello.png) 0 0;
+		}
+
+	.ava_desdemona {
+		top: 120px;
+		right: 5%;
+		background: no-repeat url(desdemona.png) 0 0;
+		}
+
+.typist_dialog {
+	margin: 30px 230px;
+	}
+
+	.typist_dialog__item {
+		clear: both;
+		margin: 0 0 20px;
+		padding: 10px 20px;
+		border: 1px solid #999;
+		border-radius: 7px;
+		}
+
+		.typist_dialog__item_speaker_othello {
+			float: left;
+			background: #B3DFFF;
+			}
+
+		.typist_dialog__item_speaker_desdemona {
+			float: right;
+			background: #FFDBF4;
+			}
+
+@media screen and (max-width: 640px) {
+	html, body {
+		font: 16px/1.4 'Josefin Slab', Georgia, serif;
+		}
+}
