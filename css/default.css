@@ -1,0 +1,54 @@
+/*在easyui基础上增加的图标库*/
+/*用户*/
+.icon-user{
+	background:url('../images/extjs_icons/user/user.png') no-repeat center center;
+}
+/*个人资料*/
+.icon-vcard{
+	background:url('../images/extjs_icons/vcard/vcard.png') no-repeat center center;
+}
+/*我的任务*/
+.icon-date{
+	background:url('../images/extjs_icons/Date/date.png') no-repeat center center;
+}
+/*设置*/
+.icon-cog{
+	background:url('../images/extjs_icons/cog.png') no-repeat center center;
+}
+/*垃圾箱*/
+.icon-bin{
+	background:url('../images/extjs_icons/bin.png') no-repeat center center;
+}
+
+/*邮件*/
+.icon-email{
+	background:url('../images/extjs_icons/email/email.png') no-repeat center center;
+}
+/*添加邮件*/
+.icon-email_add{
+	background:url('../images/extjs_icons/email/email_add.png') no-repeat center center;
+}
+/*收件箱*/
+.icon-email_open{
+	background:url('../images/extjs_icons/email/email_open.png') no-repeat center center;
+}
+/*发件箱*/
+.icon-email_go{
+	background:url('../images/extjs_icons/email/email_go.png') no-repeat center center;
+}
+/*已删邮件*/
+.icon-email_delete{
+	background:url('../images/extjs_icons/email/email_delete.png') no-repeat center center;
+}
+
+/*主页*/
+.icon-home{
+	background:url('../images/extjs_icons/home.png') no-repeat center center;
+}
+
+
+/*新增自定义样式*/
+/*button-link为提示信息增加的类*/
+.easyui-menubutton .button-link,.easyui-linkbutton .button-link{
+	color:red;
+} 
