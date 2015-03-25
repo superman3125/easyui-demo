@@ -51,8 +51,8 @@
             		</div>
 
             		<!--主页-->
-            		<div data-options="region:'center'" title="主页" iconCls="icon-home">
-					   <iframe src="home.html" frameborder="0" style="border:0px;width:100%;height:98%"></iframe>
+            		<div data-options="region:'center',tools:'#homePageTool'" title="主页" iconCls="icon-home" style="overflow:hidden">
+					   <iframe id="mainFrame" src="home.html" frameborder="0" style="border:0px;width:100%;height:100%;overflow:hidden"></iframe>
             		</div>
                 </div>
             </div>
@@ -75,6 +75,11 @@
 	    <div data-options="iconCls:'icon-email_open'">收件箱</div>
 	    <div data-options="iconCls:'icon-email_go'">发件箱</div>
 	    <div data-options="iconCls:'icon-email_delete'">垃圾箱</div>
+	</div>
+	<!--homePageTool-->
+	<div id="homePageTool">
+        <a href="javascript:void(0)" class="icon-arrow_refresh easyui-tooltip" title="刷新" id="refreshIframe"></a>
+        <a href="javascript:void(0)" class="icon-arrow_out easyui-tooltip" title="全屏" id="fullScreen"></a>
 	</div>
 
 
@@ -104,6 +109,7 @@
         </div>
     </div>
 	<script src="lib\jquery-1.11.2.js"></script>
+	<script src="js\util.js"></script>
 	<script src="lib\typist\jquery.typist.js"></script>
 	<script src="lib\jquery-easyui-1.4.2\jquery.easyui.min.js"></script>
 	<script src="lib\jquery-easyui-1.4.2\locale\easyui-lang-zh_CN.js"></script>
@@ -117,6 +123,34 @@
 			.typistRemove(11)
 			.typistAdd('Stay Foolish...')
 			.typistStop();
+
+		$("#fullScreen").on('click',function(event){
+
+			//取消a标签默认事件
+			event.preventDefault();
+			
+			//判断当前状态切换
+			if($(this).hasClass('icon-arrow_out')){
+
+				$(this).removeClass('icon-arrow_out').addClass('icon-arrow_in');
+				$(this).tooltip('update','退出全屏');
+				tools.runFullScreen(document.documentElement);
+
+			}else if($(this).hasClass('icon-arrow_in')){
+
+				$(this).removeClass('icon-arrow_in').addClass('icon-arrow_out');
+				$(this).tooltip('update','全屏');
+				tools.exitFullScreen();
+			}
+			
+		});
+
+		$("#refreshIframe").on('click',function(){
+
+			var iframe = document.getElementById('mainFrame');
+			tools.refreshIframe(iframe);
+
+		});
 	  });
       function cancleLoginWindow(){
             $("#loginWindow").window('close');

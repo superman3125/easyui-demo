@@ -46,6 +46,23 @@
 	background:url('../images/extjs_icons/home.png') no-repeat center center;
 }
 
+
+/*全屏*/
+.icon-arrow_in{
+	background:url('../images/extjs_icons/arrow/arrow_in.png') no-repeat center center;
+}
+/*退出全屏*/
+.icon-arrow_out{
+	background:url('../images/extjs_icons/arrow/arrow_out.png') no-repeat center center;
+}
+/*刷新*/
+.icon-arrow_refresh{
+	background:url('../images/extjs_icons/arrow/arrow_refresh.png') no-repeat center center;
+}
+
+
+
+
 /*新增自定义样式*/
 /*button-link为提示信息增加的类*/
 .easyui-menubutton .button-link,.easyui-linkbutton .button-link{

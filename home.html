@@ -11,78 +11,94 @@
     
     <!--主页-->
 
-    <div class="easyui-layout" data-options="fit:true">
-
-		<div data-options="region:'center'" style="padding:20px 30px" >
-				<div id="portal" style="position:relative">
-				<div style="width:30%;">
-					<div title="时钟" style="text-align:center;background:#f3eeaf;height:150px;padding:5px;">
-						<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="100" height="100">
-					      <param name="movie" value="http://www.respectsoft.com/onlineclock/analog.swf">
-					      <param name=quality value=high>
-					      <param name="wmode" value="transparent">
-					      <embed src="http://www.respectsoft.com/onlineclock/analog.swf" width="100" height="100" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" wmode="transparent"></embed>
-					    </object>
-				    </div>
-				    <div title="教程" collapsible="true" closable="true" style="height:200px;padding:5px;">
-				    	
-				    </div>
-				</div>
-				<div style="width:40%;">
-					<div id="DataGrid" title="表格" closable="true" style="height:200px;">
-						
+    
+				<div id="portalDemo"  style="position:relative;overflow-x:hidden">
+					<div style="width:30%;">
+						<div title="时钟" style="text-align:center;background:#f3eeaf;height:150px;padding:5px;">
+							<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="100" height="100">
+						      <param name="movie" value="http://www.respectsoft.com/onlineclock/analog.swf">
+						      <param name=quality value=high>
+						      <param name="wmode" value="transparent">
+						      <embed src="http://www.respectsoft.com/onlineclock/analog.swf" width="100" height="100" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" wmode="transparent"></embed>
+						    </object>
+					    </div>
+					    <div title="教程" collapsible="true" closable="true" style="height:200px;padding:5px;">
+					    	
+					    </div>
+					</div>
+					<div style="width:40%;">
+						<div id="DataGrid" title="表格" closable="true" style="height:300px;">
+							<table id="datagrid" >
+						        <thead data-options="frozen:true">
+						            <tr>
+						                <th data-options="field:'itemid',width:80">Item ID</th>
+						            </tr>
+						        </thead>
+						        <thead>
+						            <tr>
+						                <th data-options="field:'productid',width:100">Product</th>
+						                <th data-options="field:'listprice',width:80,align:'right'">List Price</th>
+						                <th data-options="field:'unitcost',width:80,align:'right'">Unit Cost</th>
+						                <th data-options="field:'attr1',width:250">Attribute</th>
+						                <th data-options="field:'status',width:60,align:'center'">Status</th>
+						            </tr>
+						        </thead>
+						    </table>
+						</div>
+					</div>
+					<div style="width:30%;">
+						<div title="日历" iconCls="icon-date" closable="true" style="height:200px;">
+							<div id="calendar" class="easyui-calendar" data-options="fit:true,border:false"></div>
+						</div>
+						<div title="待办" closable="true" style="height:200px;text-align:center;">
+							 <ul class="easyui-datalist"  lines="true" data-options="border:false,fit:true,checkbox:true,tooltip:'true'">
+						        <li value="AL" id="AL" title="Alabama" >Alabama</li>
+						        <li value="AK" id="AK" title="Alaska" >Alaska</li>
+						        <li value="AZ" id="AZ" title="Arizona" >Arizona</li>
+						    </ul>
+						</div>
 					</div>
 				</div>
-				<div style="width:30%;">
-					<div title="日历" iconCls="icon-date" closable="true" style="height:200px;">
-						<div id="calendar" class="easyui-calendar" data-options="fit:true,border:false"></div>
-					</div>
-					<div title="待办" closable="true" style="height:200px;text-align:center;">
-						 <ul class="easyui-datalist"  lines="true" data-options="border:false,fit:true,checkbox:true,tooltip:'true'">
-					        <li value="AL" id="AL" title="Alabama" >Alabama</li>
-					        <li value="AK" id="AK" title="Alaska" >Alaska</li>
-					        <li value="AZ" id="AZ" title="Arizona" >Arizona</li>
-					    </ul>
-					</div>
-				</div>
-		</div>
-		</div>
-
-    </div>
+		
            
 	<script src="lib\jquery-1.11.2.js"></script>
 	<script src="lib\jquery-easyui-1.4.2\jquery.easyui.min.js"></script>
 	<script src="lib\jquery-easyui-1.4.2\locale\easyui-lang-zh_CN.js"></script>
 	<script src="lib\jquery-easyui-1.4.2\expand\portal\jquery.portal.js"></script>
+	<script src="js\demoData.js"></script>
 	<script>
-      $(function(){
-			$('#portal').portal({
-				border:false,
-				fit:true
+	    var portal;
+	    var homepageLayout;
+
+        $(function(){
+
+			$(window).resize(function() {				
+				$('#portalDemo').portal('resize');
 			});
-			add();
-		});
-		function add(){
-			for(var i=0; i<3; i++){
-				var p = $('<div/>').appendTo('body');
-				p.panel({
-					title:'Title'+i,
-					content:'<div style="padding:5px;">Content'+(i+1)+'</div>',
-					height:100,
-					closable:true,
-					collapsible:true
-				});
-				$('#portal').portal('add', {
-					panel:p,
-					columnIndex:i
-				});	
-			}
-			$('#portal').portal('resize');
-		}
-		function remove(){
-			$('#portal').portal('remove',$('#pgrid'));
-			$('#portal').portal('resize');
-		}
+
+			portal = $('#portalDemo').portal({
+				border : false,
+				fit:true,
+				onResize:function(w,h){
+					
+				}
+			});
+
+			//表格初始化
+			populateTable();
+
+	    });
+
+
+	    function populateTable(){
+	    	$("#datagrid").datagrid({
+	    		singleSelect:true,
+	    		collapsible:true,
+	    		pagination:true,
+	    		data:demoData.datagrid(),
+	    		fit:true
+	    	});
+	    }
 
 	</script>
 
